@@ -1,6 +1,6 @@
 ﻿var organizationSettings = {
     //The url that points to team city
-    teamCityUrl: 'https://todo.edit.this.url.invalid',
+    teamCityUrl: 'http://65.60.183.254:8080',
 
     //Only show builds for branches that satisfy the predicate
     branchFilter: function(branch) {
@@ -10,9 +10,8 @@
                 || [
                     "<default>"/*This branch name is used for the default builds, when there are multiple VCS roots with different branches (e.g. source and config files are in different repos) */,
                     "master",
-                    "refs/heads/master" /* Long Git 'refs/...' names are used when 'Branch specification' doesn't have a '*' and paretheses are also not being used to mark the 'Logical branch name' - see https://confluence.jetbrains.com/display/TCD9/Working+with+Feature+Branches#WorkingwithFeatureBranches-Logicalbranchname */,
-                    "develop",
-                    "refs/heads/develop"
+                    "preview",
+                    "develop"
                 ].indexOf(branch.name) > -1
             )
         );
@@ -21,7 +20,7 @@
 
 var DefaultSettings = {
     //The main branch to show the master build status on the right hand panel on the screen. Leave empty to show the first failed one.
-    mainBranch: '',
+    mainBranch: 'develop',
 
     //Proxy to handle the cross domain ajax request.
     // This will need to be hosted on the relevant server e.g. proxy-node.js on Node.js or proxy-aspnet.ashx on IIS
@@ -40,7 +39,7 @@ var DefaultSettings = {
     dataUpdateIntervalMs: 30/*sec*/ * 1000,
 
     //How often to refresh the build image;
-    buildImageIntervalMs: 15/*min*/ * 60 * 60 * 1000,
+    buildImageIntervalMs: 5/*min*/ * 60 * 60 * 1000,
 
     //use this to stop the screen from updating automatically at all (disables both appUpdateIntervalMs and dataUpdateIntervalMs). You will need to manually refresh the page to get new data.
     enableAutoUpdate: true,
